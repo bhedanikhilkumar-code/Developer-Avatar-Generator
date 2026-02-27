@@ -2,7 +2,7 @@ import express from "express";
 import { createAvatarModel } from "./model.js";
 import { renderAvatarSvg } from "./svg.js";
 
-const app = express();
+const app = express();`napp.use(express.static("public"));
 const port = Number(process.env.PORT || 8787);
 
 app.get("/health", (_, res) => res.json({ ok: true }));

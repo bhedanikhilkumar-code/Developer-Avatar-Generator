@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Developer Avatar Generator</title>
+    <style>
+      body{font-family:Inter,Segoe UI,Arial;background:#020617;color:#e2e8f0;padding:24px;max-width:760px;margin:auto}
+      .card{background:#0f172a;border:1px solid #1e293b;padding:16px;border-radius:14px}
+      input,select,button{padding:10px;border-radius:10px;border:1px solid #334155;background:#0b1220;color:#e2e8f0}
+      .row{display:flex;gap:12px;flex-wrap:wrap}.preview{margin-top:16px}
+    </style>
+  </head>
+  <body>
+    <h1>Developer Avatar Generator</h1>
+    <div class="card">
+      <div class="row">
+        <input id="seed" value="Nikhil Developer" />
+        <select id="theme"><option value="">auto</option><option>midnight</option><option>forest</option><option>sunset</option><option>matrix</option></select>
+        <button id="go">Generate</button>
+      </div>
+      <div class="preview"><img id="avatar" width="256" height="256"/></div>
+    </div>
+    <script>
+      const go=()=>{
+        const seed=document.getElementById('seed').value;
+        const theme=document.getElementById('theme').value;
+        const qs=new URLSearchParams({seed}); if(theme)qs.set('theme',theme);
+        document.getElementById('avatar').src='/avatar.svg?'+qs.toString();
+      };
+      document.getElementById('go').onclick=go; go();
+    </script>
+  </body>
+</html>
